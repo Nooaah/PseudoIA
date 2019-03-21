@@ -1,0 +1,68 @@
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IA de Noah</title>
+    <style>
+        html {
+            font-family: arial;
+        }
+
+        canvas {
+            background-color: lightgrey;
+            margin-left: 2px;
+
+            border-radius: 50px;
+        }
+
+        body {
+            margin: 0;
+        }
+        p {
+            font-size: 20px;
+        }
+        #cases {
+            font-size: 25px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas name="myCanvas" id="myCanvas" width="500" height="500"></canvas>
+    <br>
+    <br>
+    <div style="margin-left:30px;">
+
+        <button id="lancer_jeu" disabled onclick="lancer()">Lancer</button>
+        <a href=""><button>RAZ</button></a>
+
+        <p>
+            <span id="cases">0</span> cases parcourus
+        </p>
+    </div>
+
+
+    <script src="../js/index.js"></script>
+
+    <script>
+        var canv = document.getElementById('myCanvas');
+        canv.addEventListener("click", function (e) {
+            numColonne = Math.floor((e.pageX / 50));
+            numLigne = Math.floor((e.pageY / 50));
+
+            if (numColonne > 0 && numColonne < 9 && numLigne > 0 && numLigne < 9) {
+                ligne[numLigne][numColonne] = 1;
+                draw_parcours();
+                draw_perso();
+
+                document.getElementById('lancer_jeu').disabled = false;
+            }
+        });
+    </script>
+</body>
+
+</html>
